@@ -17,10 +17,14 @@ class PokemonViewController: UIViewController {
     
     @IBOutlet var answersButtons: [UIButton]!
     
+    lazy var pokemonManager = PokemonManager()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         createButtons()
+        pokemonManager.fetchPokemon()
     }
     
     override func viewDidLayoutSubviews() {
@@ -62,3 +66,14 @@ class PokemonViewController: UIViewController {
     }
 }
 
+extension PokemonViewController: PokemonManagerDelegate {
+    func didUpdatePokemon(pokemon: [PokemonModel]) {
+        print(pokemon)
+    }
+    
+    func didFailWithError(error: any Error) {
+        print(error)
+    }
+    
+    
+}
