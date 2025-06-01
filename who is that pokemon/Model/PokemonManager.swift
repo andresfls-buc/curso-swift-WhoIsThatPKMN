@@ -28,6 +28,7 @@ struct PokemonManager {
                         print(pokemon)
                     }
                 }
+                
             }
             // 4. Start the task
             task.resume()
