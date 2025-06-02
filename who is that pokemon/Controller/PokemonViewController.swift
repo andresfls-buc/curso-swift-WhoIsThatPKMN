@@ -19,6 +19,7 @@ class PokemonViewController: UIViewController {
     
     lazy var pokemonManager = PokemonManager()
     lazy var imageManager = ImageManager()
+    lazy var game = GameModel()
     
     var randomPokemon: [PokemonModel] = []
     var correctAnswer: String = ""
@@ -29,6 +30,7 @@ class PokemonViewController: UIViewController {
         pokemonManager.delegate = self
         imageManager.delegate = self
         
+        print(game.getScore())
         createButtons()
         pokemonManager.fetchPokemon()
     }

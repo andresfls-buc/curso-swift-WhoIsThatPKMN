@@ -12,20 +12,24 @@ struct GameModel{
     
     //Revisar si la respuesta es correcta
     
-    //  func checkAnseer(_ userAnswer: String, _correctAnswer) -> Bool {
-    
-    //  }
+    mutating func checkAnswer(_ userAnswer: String, _ correctAnswer: String) -> Bool {
+        if userAnswer.lowercased() == correctAnswer.lowercased() {
+            score += 1
+        return true
+        }
+        return false
+     }
     
     // Obtener score
     
- //   func getScore() -> Int {
-        
-  //  }
+   func getScore() -> Int {
+        return score
+   }
     
     // Cambiar el score
     
-    //  func setScore( score: Int) {
-    //      self.score = score
-    //   }
+    mutating  func setScore( score: Int) {
+          self.score = score
+      }
     
 }
