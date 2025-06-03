@@ -21,7 +21,11 @@ class PokemonViewController: UIViewController {
     lazy var imageManager = ImageManager()
     lazy var game = GameModel()
     
-    var randomPokemon: [PokemonModel] = []
+    var randomPokemon: [PokemonModel] = [] {
+        didSet {
+            setButtonTitles()
+        }
+    }
     var correctAnswer: String = ""
     var correctAnswerImage: String = ""
     
@@ -30,7 +34,7 @@ class PokemonViewController: UIViewController {
         pokemonManager.delegate = self
         imageManager.delegate = self
         
-        print(game.getScore())
+        
         createButtons()
         pokemonManager.fetchPokemon()
     }
@@ -52,6 +56,14 @@ class PokemonViewController: UIViewController {
             button.layer.shadowOpacity = 1
             button.layer.shadowRadius = 0
             button.layer.masksToBounds = false
+        }
+    }
+    
+    func setButtonTitles() {
+        for (index, button) in answersButtons.enumerated() {
+            DispatchQueue.main.async { [self] in
+                button.setTitle(randomPokemon[safe: index]?.name.capitalized, for: .normal)
+            }
         }
     }
     
