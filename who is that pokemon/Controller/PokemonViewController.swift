@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PokemonViewController: UIViewController {
 
@@ -37,15 +38,25 @@ class PokemonViewController: UIViewController {
         
         createButtons()
         pokemonManager.fetchPokemon()
+        labelMessage.text = ""
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        setGradientBackground()
+       
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        print(sender.title(for: .normal)!)
+        let userAnswer = sender.title(for: .normal)!
+        
+        if game.checkAnswer(userAnswer, correctAnswer) {
+            
+            labelMessage.text = "Correcto!"
+            labelScore.text = "Puntaje: \(game.score)"
+            
+            sender.layer.borderColor = UIColor.systemGreen.cgColor
+            sender.layer.borderWidth = 2
+        }
     }
     
     func createButtons() {
@@ -67,23 +78,7 @@ class PokemonViewController: UIViewController {
         }
     }
     
-    func setGradientBackground() {
-        // Remove existing gradient layers to prevent stacking
-        view.layer.sublayers?.removeAll(where: { $0 is CAGradientLayer })
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = view.bounds
-        
-        gradientLayer.colors = [
-            UIColor.systemBlue.cgColor,
-            UIColor.systemPurple.cgColor
-        ]
-        
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
-        
-        view.layer.insertSublayer(gradientLayer, at: 0)
-    }
+   
 }
 
 extension PokemonViewController: PokemonManagerDelegate {
@@ -109,7 +104,20 @@ extension PokemonViewController: PokemonManagerDelegate {
 
 extension PokemonViewController: ImageManagerDelegate {
     func didUpdateImage(images image: ImageModel) {
-        print(image.imageUrl)
+        correctAnswerImage = image.imageUrl
+        
+        DispatchQueue.main.async { [self] in
+            let url = URL(string: image.imageUrl)
+            
+            let effect = ColorControlsProcessor(brightness: -1,contrast: 1, saturation: 1, inputEV: 0 )
+            pokemonImage.kf.setImage(
+                with: url,
+            options: [
+                .processor(effect)
+            ]
+            )
+            
+        }
     }
 
     
