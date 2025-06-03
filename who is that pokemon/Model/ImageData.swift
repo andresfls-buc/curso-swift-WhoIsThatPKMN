@@ -12,22 +12,10 @@ import Foundation
 // MARK: - PokemonData
 struct ImageData: Codable {
     
-    let sprites: Sprites?
+    let sprites: Sprites
     
     
     
-    // MARK: - Other
-    struct Other: Codable {
-        
-        let officialArtwork: OfficialArtwork?
-        
-        
-        enum CodingKeys: String, CodingKey {
-            
-            case officialArtwork = "official-artwork"
-            
-        }
-    }
     
     // MARK: - Sprites
     class Sprites: Codable {
@@ -43,6 +31,20 @@ struct ImageData: Codable {
         }
     }
 
+    // MARK: - Other
+    struct Other: Codable {
+        
+        let officialArtwork: OfficialArtwork?
+        
+        
+        enum CodingKeys: String, CodingKey {
+            
+            case officialArtwork = "official-artwork"
+            
+        }
+    }
+    
+  
 
     // MARK: - OfficialArtwork
     struct OfficialArtwork: Codable {

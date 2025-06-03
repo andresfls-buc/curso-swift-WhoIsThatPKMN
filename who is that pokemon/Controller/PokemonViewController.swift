@@ -35,6 +35,7 @@ class PokemonViewController: UIViewController {
         pokemonManager.delegate = self
         imageManager.delegate = self
         
+      
         
         createButtons()
         pokemonManager.fetchPokemon()
@@ -89,7 +90,7 @@ extension PokemonViewController: PokemonManagerDelegate {
         let imageData = randomPokemon[index].imageUrl
         correctAnswer = randomPokemon[index].name
     
-    print("🔍 imageData URL: \(imageData)")
+    
     imageManager.fetchImage(url: imageData)
     }
     

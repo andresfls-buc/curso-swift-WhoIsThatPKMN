@@ -13,7 +13,7 @@ protocol ImageManagerDelegate {
 }
 
 struct ImageManager {
-  
+    
     var delegate: ImageManagerDelegate?
     
     func fetchImage(url: String){
@@ -45,7 +45,7 @@ struct ImageManager {
             let imageUrl = decodedData.sprites?.other?.officialArtwork?.frontDefault ?? ""
             return ImageModel(imageUrl: imageUrl)
         } catch {
-            print("Error decoding JSON: \(error)")
+            print("❌ Error decoding JSON: \(error)")
             return nil
         }
     }
