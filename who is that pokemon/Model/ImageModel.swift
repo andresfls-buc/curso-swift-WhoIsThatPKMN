@@ -9,4 +9,5 @@ import Foundation
 
 struct ImageModel {
     let imageUrl: String
+    
 }

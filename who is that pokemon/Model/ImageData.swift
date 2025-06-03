@@ -12,7 +12,7 @@ import Foundation
 // MARK: - PokemonData
 struct ImageData: Codable {
     
-    let sprites: Sprites
+    let sprites: Sprites?
     
     
     
