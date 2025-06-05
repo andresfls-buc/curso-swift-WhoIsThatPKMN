@@ -9,42 +9,27 @@
 
 import Foundation
 
-// MARK: - PokemonData
+// MARK: - ImageData
 struct ImageData: Codable {
-    
     let sprites: Sprites?
-    
-    
-    
-    
+
     // MARK: - Sprites
-    class Sprites: Codable {
-        
+    struct Sprites: Codable {
         let other: Other?
-        
-        
-       
-        init(other: Other?) {
-            
-            self.other = other
-            
+
+        enum CodingKeys: String, CodingKey {
+            case other
         }
     }
 
     // MARK: - Other
     struct Other: Codable {
-        
         let officialArtwork: OfficialArtwork?
-        
-        
+
         enum CodingKeys: String, CodingKey {
-            
             case officialArtwork = "official-artwork"
-            
         }
     }
-    
-  
 
     // MARK: - OfficialArtwork
     struct OfficialArtwork: Codable {
@@ -52,8 +37,6 @@ struct ImageData: Codable {
 
         enum CodingKeys: String, CodingKey {
             case frontDefault = "front_default"
-          
         }
     }
-
 }
