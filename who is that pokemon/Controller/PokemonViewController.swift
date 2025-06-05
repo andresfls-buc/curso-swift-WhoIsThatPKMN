@@ -52,11 +52,37 @@ class PokemonViewController: UIViewController {
         
         if game.checkAnswer(userAnswer, correctAnswer) {
             
-            labelMessage.text = "Correcto!"
+            labelMessage.text = "Correcto es \(userAnswer.capitalized) !"
             labelScore.text = "Puntaje: \(game.score)"
             
             sender.layer.borderColor = UIColor.systemGreen.cgColor
             sender.layer.borderWidth = 2
+            
+            let url = URL(string: correctAnswerImage)
+            pokemonImage.kf.setImage(with: url)
+            
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
+                resetGame()
+                sender.layer.borderWidth = 0
+            }
+
+            
+        }else {
+            labelMessage.text = " No, es un \(correctAnswer.capitalized) !"
+            sender.layer.borderColor = UIColor.systemRed.cgColor
+            sender.layer.borderWidth = 2
+            let url = URL(string: correctAnswerImage)
+            pokemonImage.kf.setImage(with: url)
+            resetGame()
+        }
+        
+        func resetGame() {
+            self.pokemonManager.fetchPokemon()
+            game.setScore(score: 0)
+            labelScore.text = "Puntaje: \(game.score)"
+            sender.layer.borderWidth = 0
+            self.labelMessage.text = ""
+
         }
     }
     
