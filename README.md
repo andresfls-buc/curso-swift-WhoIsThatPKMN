@@ -1,13 +1,18 @@
-# ¿Quién es ese Pokémon?
+# ¿Who is this Pokemon?
 
-Este es el repositorio base de la aplicación que construiremos durante el curso de Swift con Storyboards. 
-Asegurate de clonarlo para poder continuar con el proyecto.
+Who is that Pokémon is an app developed in Swift that lets users guess the name of a Pokémon based on its silhouette — just like in the classic anime game. It uses a public Pokémon API to fetch real-time data and images.
 
-Si quieres retarte a ti misma creando el layout para la aplicación, aquí tienes el [Figma de referencia](https://www.figma.com/file/GvarU7mYsWZ7VjJH07wDpO/Who-is-that-pokemon?node-id=0%3A1) para cada una de las interfaces que se van a desarrollar las puedas replicar y practicar.
+Key Features:
+	•	Displays silhouettes of random Pokémon.
+	•	Lets users type their guesses and check if they’re correct.
+	•	Clean, user-friendly interface.
+	•	Optional scoring or feedback system.
+	•	Modular architecture following Swift best practices.
+	•	Uses an ImageManager to handle image downloads efficiently.
+	•	Integrates a REST API to retrieve official Pokémon data and sprites.
 
-![Pokemon Game](https://i.imgur.com/Rdll2KU.png)
+This app is perfect for Pokémon fans looking for a fun and interactive way to test their knowledge.
 
-## Licencia
-> Este proyecto esta creado baja la licencia MIT.
+🎥 Demo
 
-Hecho con 💚 por [alexcamachogz](https://twitter.com/alexcamachogz)
+![Demo](https://imgur.com/a/bl6zsgo)
